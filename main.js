@@ -12,6 +12,7 @@
 // let books = [];
 let addBookBtn = $('#addBook');
 let booksArray = [];
+let count = null;
 
 if (JSON.parse(localStorage.getItem('booksArray')) == null) {
     booksArray = []
@@ -32,15 +33,18 @@ class Books {
         };
         console.log(this.books);
         this.books.push(book);
-        localStorage.setItem('booksArray', JSON.stringify(this.books))
+        localStorage.setItem('booksArray', JSON.stringify(this.books));
+        this.render();
     }
 
     render() {
         let allBooks = document.querySelector('#allBooks');
-        console.log(this.books);
+        allBooks.innerHTML = '';
         this.books.forEach((item) => {
+            count++;
             allBooks.innerHTML += `
             <ul class="book">
+            <li>${count}</li>
             <li>${item.title}</li>
             <li>${item.autor}</li>
             <li>${item.pages}</li>
@@ -51,9 +55,9 @@ class Books {
 }
 
 addBookBtn.click(() => {
-    let title = $('#titleBook').val();
-    let autor = $('#autorBook').val();
-    let pages = $('#pagesBook').val();
+    let title = document.querySelector('#titleBook').value;
+    let autor = document.querySelector('#autorBook').value;
+    let pages = document.querySelector('#pagesBook').value;
     let book = new Books();
     book.addBook(title, autor, pages);
 });
