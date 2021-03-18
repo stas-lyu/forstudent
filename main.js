@@ -49,34 +49,28 @@ class Books {
             <li>${item.autor}</li>
             <li>${item.pages}</li>
             <li><span>edit</span>
-            <span class="delete" id="${index}">delete</span>
+            <span class="delete" onclick="deleteBook(${index})" id="${index}">delete</span>
             </li>
             </ul>
             `
         }
-
         this.books.forEach(iterate)
     }
+}
 
-    deleteBook() {
-        let allBooks = document.querySelectorAll('.delete');
-        allBooks.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                delete booksArray[btn.id];
-                this.render()
-            })
-        })
-    }
+let book = new Books();
+
+function deleteBook(index) {
+            booksArray.splice(index, index+1);
+            console.log(booksArray);
+            book.render()
 }
 
 addBookBtn.click(() => {
     let autor = document.querySelector('#autorBook').value;
     let pages = document.querySelector('#pagesBook').value;
-    let book = new Books();
     book.addBook(title, autor, pages);
 });
 
 let render = new Books();
 render.render();
-render.deleteBook();
-
