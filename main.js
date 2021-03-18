@@ -20,7 +20,7 @@ if (JSON.parse(localStorage.getItem('booksArray')) == null) {
 }
 
 class Books {
-    constructor(books = booksArray, title) {
+    constructor(books = booksArray, title, id) {
         this.books = books;
         this.title = title;
     }
@@ -44,16 +44,29 @@ class Books {
         function iterate(item, index) {
             allBooks.innerHTML += `
             <ul class="book">
-            <li>${index+1}</li>
+            <li>${index + 1}</li>
             <li>${item.title}</li>
             <li>${item.autor}</li>
             <li>${item.pages}</li>
+            <li><span>edit</span>
+            <span class="delete" id="${index}">delete</span>
+            </li>
             </ul>
             `
         }
+
         this.books.forEach(iterate)
     }
-    
+
+    deleteBook() {
+        let allBooks = document.querySelectorAll('.delete');
+        allBooks.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                delete booksArray[btn.id];
+                this.render()
+            })
+        })
+    }
 }
 
 addBookBtn.click(() => {
@@ -65,4 +78,5 @@ addBookBtn.click(() => {
 
 let render = new Books();
 render.render();
+render.deleteBook();
 
