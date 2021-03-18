@@ -20,7 +20,7 @@ if (JSON.parse(localStorage.getItem('booksArray')) == null) {
 }
 
 class Books {
-    constructor(books = booksArray, title, id) {
+    constructor(books = booksArray, title) {
         this.books = books;
         this.title = title;
     }
@@ -67,8 +67,10 @@ function deleteBook(index) {
 }
 
 addBookBtn.click(() => {
+    let title = document.querySelector('#titleBook').value;
     let autor = document.querySelector('#autorBook').value;
     let pages = document.querySelector('#pagesBook').value;
+
     book.addBook(title, autor, pages);
 });
 
