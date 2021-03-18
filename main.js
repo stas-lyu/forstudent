@@ -20,8 +20,9 @@ if (JSON.parse(localStorage.getItem('booksArray')) == null) {
 }
 
 class Books {
-    constructor(books = booksArray) {
-        this.books = books
+    constructor(books = booksArray, title) {
+        this.books = books;
+        this.title = title;
     }
 
     addBook(title, auotor, pages) {
@@ -50,13 +51,12 @@ class Books {
             </ul>
             `
         }
-
         this.books.forEach(iterate)
     }
+    
 }
 
 addBookBtn.click(() => {
-    let title = document.querySelector('#titleBook').value;
     let autor = document.querySelector('#autorBook').value;
     let pages = document.querySelector('#pagesBook').value;
     let book = new Books();
