@@ -36,8 +36,16 @@ class Books {
     }
 
     render() {
+        let allBooks = $('#allBooks');
+        console.log(this.books);
         this.books.forEach((item) => {
-            console.log(item)
+            allBooks.innerHTML = `
+            <ul class="book">
+            <li>${item.title}</li>
+            <li>${item.autor}</li>
+            <li>${item.pages}</li>
+            </ul>
+            `
         })
     }
 }
@@ -48,7 +56,6 @@ addBookBtn.click(() => {
     let pages = $('#pagesBook').val();
     let book = new Books();
     book.addBook(title, autor, pages);
-    console.log();
 });
 
 let render = new Books();
