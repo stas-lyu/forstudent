@@ -54,6 +54,7 @@ class Books {
             </ul>
             `
         }
+
         this.books.forEach(iterate)
     }
 }
@@ -61,9 +62,13 @@ class Books {
 let book = new Books();
 
 function deleteBook(index) {
-            booksArray.splice(index, index+1);
-            console.log(booksArray);
-            book.render()
+    if (index > 0 || index >-1) {
+        booksArray.splice(index, 1);
+    }
+
+    console.log(booksArray);
+    localStorage.setItem('booksArray', JSON.stringify(booksArray));
+    book.render()
 }
 
 addBookBtn.click(() => {
