@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
-<div class="create-book">
+<form class="create-book">
     <label for="titleBook">Название книги
-    <input id="titleBook" placeholder="Гарри Поттер" type="text">
+    <input id="titleBook" placeholder="Гарри Поттер" type="text" required>
     </label>
     <label for="autorBook">Автор
-        <input id="autorBook" placeholder="Стивен Кинг" type="text">
+        <input id="autorBook" placeholder="Стивен Кинг" type="text" required>
     </label>
     <label for="pagesBook">Количество страниц
-        <input id="pagesBook" placeholder="243" type="text">
+        <input id="pagesBook" placeholder="243" type="text" required>
     </label>
-</div>
-
+    <button id="addBook">Добавить книгу</button>
+</form>
 
 <script src="main.js"></script>
 </body>
