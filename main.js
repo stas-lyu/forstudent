@@ -11,10 +11,17 @@
 // полях не может быть отрицательных значений.
 // let books = [];
 let addBookBtn = $('#addBook');
-let books = [];
+let booksArray = [];
+
+if (JSON.parse(localStorage.getItem('booksArray')) == null) {
+    booksArray = []
+} else {
+    booksArray = JSON.parse(localStorage.getItem('booksArray'));
+}
 
 class Books {
-    constructor() {
+    constructor(books = booksArray) {
+        this.books = books
     }
 
     addBook(title, auotor, pages) {
@@ -23,7 +30,15 @@ class Books {
             autor: auotor,
             pages: pages
         };
-        books.push(book);
+        console.log(this.books);
+        this.books.push(book);
+        localStorage.setItem('booksArray', JSON.stringify(this.books))
+    }
+
+    render() {
+        this.books.forEach((item) => {
+            console.log(item)
+        })
     }
 }
 
@@ -33,7 +48,9 @@ addBookBtn.click(() => {
     let pages = $('#pagesBook').val();
     let book = new Books();
     book.addBook(title, autor, pages);
-    console.log(book);
-    console.log(books);
+    console.log();
 });
+
+let render = new Books();
+render.render();
 
