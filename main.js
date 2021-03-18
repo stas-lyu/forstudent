@@ -48,7 +48,8 @@ class Books {
             <li>${item.title}</li>
             <li>${item.autor}</li>
             <li>${item.pages}</li>
-            <li><span>edit</span>
+<!--            <li><span onclick="changeBook(${index})">edit</span>-->
+                        <li><span>edit</span>
             <span class="delete" onclick="deleteBook(${index})" id="${index}">delete</span>
             </li>
             </ul>
@@ -61,8 +62,19 @@ class Books {
 
 let book = new Books();
 
+// function changeBook(index) {
+//     let obj =  // Обратится к массиву книг по индексу
+//
+//     obj.title = inputFrom title;
+//     obj.title = inputFrom title;
+//     obj.title = inputFrom title;
+//
+//     render();
+//
+// }
+
 function deleteBook(index) {
-    if (index > 0 || index >-1) {
+    if (index > 0 || index > -1) {
         booksArray.splice(index, 1);
     }
 
