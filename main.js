@@ -9,32 +9,31 @@
 // издательства.
 //     При добавлении или изменении книги необходимо валидировать данные: все поля обязательны для заполнения и в числовых
 // полях не может быть отрицательных значений.
-let title = $('#titleBook').value;
-let autor = $('#autorBook').value;
-let pages = $('#pagesBook').value;
-let books = [];
+// let books = [];
 let addBookBtn = $('#addBook');
+let books = [];
 
 class Books {
-    constructor(books = books, title = title, autor = autor, pages = pages) {
-        this.books = books;
-        this.title = title;
-        this.autor = autor;
-        this.pages = pages;
+    constructor() {
     }
-    addBook() {
+
+    addBook(title, auotor, pages) {
         let book = {
-            title: this.title,
-            autor: this.autor,
-            pages: this.pages
+            title: title,
+            autor: auotor,
+            pages: pages
         };
-        this.books.push(book);
+        books.push(book);
     }
 }
 
-addBookBtn.click(()=> {
+addBookBtn.click(() => {
+    let title = $('#titleBook').val();
+    let autor = $('#autorBook').val();
+    let pages = $('#pagesBook').val();
     let book = new Books();
+    book.addBook(title, autor, pages);
     console.log(book);
-    console.log(books)
+    console.log(books);
 });
 
