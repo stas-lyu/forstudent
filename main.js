@@ -36,10 +36,10 @@ class Books {
     }
 
     render() {
-        let allBooks = $('#allBooks');
+        let allBooks = document.querySelector('#allBooks');
         console.log(this.books);
         this.books.forEach((item) => {
-            allBooks.innerHTML = `
+            allBooks.innerHTML += `
             <ul class="book">
             <li>${item.title}</li>
             <li>${item.autor}</li>
