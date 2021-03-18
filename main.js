@@ -12,7 +12,6 @@
 // let books = [];
 let addBookBtn = $('#addBook');
 let booksArray = [];
-let count = null;
 
 if (JSON.parse(localStorage.getItem('booksArray')) == null) {
     booksArray = []
@@ -40,17 +39,19 @@ class Books {
     render() {
         let allBooks = document.querySelector('#allBooks');
         allBooks.innerHTML = '';
-        this.books.forEach((item) => {
-            count++;
+
+        function iterate(item, index) {
             allBooks.innerHTML += `
             <ul class="book">
-            <li>${count}</li>
+            <li>${index+1}</li>
             <li>${item.title}</li>
             <li>${item.autor}</li>
             <li>${item.pages}</li>
             </ul>
             `
-        })
+        }
+
+        this.books.forEach(iterate)
     }
 }
 
